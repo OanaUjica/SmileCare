@@ -12,7 +12,7 @@ namespace SmileCare.Models
         public string Dentist { get; set; }
         public string Patient { get; set; }
         public Stage Stage { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public string Employee { get; set; }
         public Category Category { get; set; }
         public Tooth Tooth { get; set; }
@@ -48,35 +48,58 @@ namespace SmileCare.Models
 
     public enum Tooth
     {
+        [Display(Name = "Upper Third Molar")]
         UpperThirdMolar,
+        [Display(Name = "Upper Second Molar")]
         UpperSecondMolar,
+        [Display(Name = "Upper First Molar")]
         UpperFirstMolar,
+        [Display(Name = "Upper Second Premolar")]
         UpperSecondPremolar,
+        [Display(Name = "Upper First Premolar")]
         UpperFirstPremolar,
+        [Display(Name = "Upper Canine")]
         UpperCanine,
+        [Display(Name = "Upper Lateral Incisor")]
         UpperLateralIncisor,
+        [Display(Name = "Upper Central Incisor")]
         UpperCentralIncisor,
+        [Display(Name = "Lower Third Molar")]
         LowerThirdMolar,
+        [Display(Name = "Lower Second Molar")]
         LowerSecondMolar,
+        [Display(Name = "Lower First Molar")]
         LowerFirstMolar,
+        [Display(Name = "Lower Second Premolar")]
         LowerSecondPremolar,
+        [Display(Name = "Lower First Premolar")]
         LowerFirstPremolar,
+        [Display(Name = "Lower Canine")]
         LowerCanine,
+        [Display(Name = "Lower Lateral Incisor")]
         LowerLateralIncisor,
+        [Display(Name = "Lower Central Incisor")]
         LowerCentralIncisor
     }
 
     public enum RestorationType
     {
+        [Display(Name = "Crown Over Natural Abutment")]
         CrownOverNaturalAbutment,
+        [Display(Name = "Crown Over Implant")]
         CrownOverImplant,
-        CoronoRadicular,
+        [Display(Name = "Corono-Radicular")]
+        CoronoRadicular,      
         Veneer,
         Inlay,
         Onlay,
+        [Display(Name = "Temporary Single Unit Over Natural Abutment")]
         TemporarySingleUnitOverNaturalAbutment,
+        [Display(Name = "Temporary Single Unit Over Natural Implant")]
         TemporarySingleUnitOverNaturalImplant,
+        [Display(Name = "Single Unit Wax-Up On Natural Abutment")]
         SingleUnitWaxUpOnNaturalAbutment,
+        [Display(Name = "Single Unit Wax-Up On Natural Implant")]
         SingleUnitWaxUpOnNaturalImplant
     }
 

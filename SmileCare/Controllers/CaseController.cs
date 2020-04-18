@@ -17,7 +17,14 @@ namespace SmileCare.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ReadAll()
         {
             var _cases = _repository.ReadAll().OrderBy(c => c.Dentist);
             return View(_cases);
