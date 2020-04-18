@@ -1,0 +1,13 @@
+﻿.navigationBar {
+    background-color: white;
+    font-size: 17px;
+    border-bottom-color: whitesmoke;
+    border-bottom: inset;
+    letter-spacing: 4px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 6px;
+    font-size: 30px;
+}
