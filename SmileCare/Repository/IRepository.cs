@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SmileCare.Repository
 {
-    public interface IRepository
+    public interface IRepository<T>
     {
-        void Create(Case entity);
-        IEnumerable<Case> ReadAll();
-        Case ReadById(int id);
-        void Update(Case entity);
+        void Create(T entity);
+        IEnumerable<T> ReadAll();
+        T ReadById(int id);
+        void Update(T entity);
         void Delete(int id);
     }
 }

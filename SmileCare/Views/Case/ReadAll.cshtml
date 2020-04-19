@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Case>
 
 
-<div class="container-fluid" style="padding-top: 140px; padding-bottom: 360px; background-color:cadetblue;color: #ffffff;">
+<div class="container-fluid" style="padding-top: 140px; padding-bottom: 280px; background-color:cadetblue;color: #ffffff;">
     <h1 class="text-center">Dental prescriptions details</h1>
 
     <p class="text-center" style="padding-top: 40px;">
@@ -58,10 +58,10 @@
                             @Html.DisplayFor(modelItem => item.Id)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Dentist)
+                            @Html.DisplayFor(modelItem => item.Dentist.FullName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Patient)
+                            @Html.DisplayFor(modelItem => item.Patient.FullName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Stage)

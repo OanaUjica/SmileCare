@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SmileCare.Models;
+﻿using SmileCare.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,42 +6,40 @@ using System.Threading.Tasks;
 
 namespace SmileCare.Repository
 {
-    public class CaseRepository : IRepository<Case>
+    public class PatientRepository : IRepository<Patient>
     {
         private readonly LaboratoryDbContext _laboratoryDbContext;
 
-        public CaseRepository(LaboratoryDbContext laboratoryDbContext)
+        public PatientRepository(LaboratoryDbContext laboratoryDbContext)
         {
             _laboratoryDbContext = laboratoryDbContext;
         }
 
-        public void Create(Case entity)
+        public void Create(Patient patient)
         {
-            _laboratoryDbContext.Cases.Add(entity);
+            _laboratoryDbContext.Patients.Add(patient);
             _laboratoryDbContext.SaveChanges();
         }
 
 
 
-        public IEnumerable<Case> ReadAll()
+        public IEnumerable<Patient> ReadAll()
         {
-            return _laboratoryDbContext.Cases;
+            return _laboratoryDbContext.Patients;
+        }
+
+
+        public Patient ReadById(int id)
+        {
+            return _laboratoryDbContext.Patients.FirstOrDefault(c => c.Id == id);
         }
 
 
 
-        public Case ReadById(int id)
-        {
-            return _laboratoryDbContext.Cases.FirstOrDefault(c => c.Id == id);
-        }
-
-
-
-        public void Update(Case entity)
+        public void Update(Patient patient)
         {
             throw new NotImplementedException();
         }
-
 
 
         public void Delete(int id)

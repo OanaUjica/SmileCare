@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SmileCare.Repository
 {
-    public class MockRepository : IRepository
+    public class MockRepository : IRepository<Case>
     {
         private List<Case> _cases;
 

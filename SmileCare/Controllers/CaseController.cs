@@ -10,12 +10,16 @@ namespace SmileCare.Controllers
 {
     public class CaseController : Controller
     {
-        private readonly IRepository _repository;
+        private readonly IRepository<Case> _repository;
 
-        public CaseController(IRepository repository)
+        public CaseController(IRepository<Case> repository)
         {
             _repository = repository;
         }
+
+
+
+
 
         [HttpGet]
         public IActionResult Create()
@@ -24,7 +28,7 @@ namespace SmileCare.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Case newCase)
+        public IActionResult Create([Bind("DentistId,PatientId,Employee,Stage,Category,Tooth,RestorationType,Shade,Price,Comment,CreationDate,IsImplant")]Case newCase)
         {
             if (!ModelState.IsValid)
             {
@@ -32,16 +36,16 @@ namespace SmileCare.Controllers
             }
 
             var _newCase = new Case
-            {
-                Id = newCase.Id,
-                Dentist = newCase.Dentist,
-                Patient = newCase.Patient,
+            {               
+                DentistId = newCase.Dentist.Id,
+                PatientId = newCase.Patient.Id,
                 Employee = newCase.Employee,
                 Stage = newCase.Stage,
                 Category = newCase.Category,
                 Tooth = newCase.Tooth,
                 RestorationType = newCase.RestorationType,
                 Shade = newCase.Shade,
+                Price = newCase.Price,
                 Comment = newCase.Comment,
                 CreationDate = newCase.CreationDate,
                 IsImplant = newCase.IsImplant
@@ -49,13 +53,21 @@ namespace SmileCare.Controllers
 
             _repository.Create(_newCase);
 
-            return RedirectToAction(nameof(ReadAll), _newCase);
+            var _listOfCases= _repository.ReadAll().OrderBy(p => p.Id);
+
+            return RedirectToAction(nameof(ReadAll), _listOfCases);
         }
+
+
+
+
+
+
 
         [HttpGet]
         public IActionResult ReadAll()
         {
-            var _cases = _repository.ReadAll().OrderBy(c => c.Dentist);
+            var _cases = _repository.ReadAll().OrderBy(c => c.DentistId);
             return View(_cases);
         }
     }
