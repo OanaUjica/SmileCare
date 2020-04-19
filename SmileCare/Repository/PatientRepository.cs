@@ -38,7 +38,18 @@ namespace SmileCare.Repository
 
         public void Update(Patient patient)
         {
-            throw new NotImplementedException();
+            if (_laboratoryDbContext.Patients.FirstOrDefault(p => p.Id == patient.Id) == null)
+            {
+                _laboratoryDbContext.SaveChanges();
+            }
+            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).FirstName = patient.FirstName;
+            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).LastName = patient.LastName;
+            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).City = patient.City;
+            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).Email = patient.Email;
+            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).Phone = patient.Phone;
+
+            //_laboratoryDbContext.Patients.Update(patient);
+            _laboratoryDbContext.SaveChanges();
         }
 
 

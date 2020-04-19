@@ -37,7 +37,7 @@ namespace SmileCare.Models
         public string FullName {
             get
             {
-                return LastName + " " + FirstName;
+                return FirstName + " " + LastName;
             }
         }
 

@@ -1,0 +1,98 @@
+﻿@model SmileCare.Models.Case
+
+<div class="container-fluid" style="padding-top: 140px; padding-bottom: 60px; background-color:cadetblue;color: #ffffff;">
+    <h1 class="text-center" style="padding-bottom: 20px; font-size: 50px;">Case's update</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form asp-controller="Case" asp-action="Update" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="DentistId" class="control-label"></label>
+                    <select asp-for="DentistId" class="form-control" asp-items="ViewBag.DentistId"></select>
+                    <span asp-validation-for="DentistId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PatientId" class="control-label"></label>
+                    <select asp-for="PatientId" class="form-control" asp-items="ViewBag.PatientId"></select>
+                    <span asp-validation-for="PatientId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Employee" class="control-label"></label>
+                    <input asp-for="Employee" class="form-control" />
+                    <span asp-validation-for="Employee" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Stage" class="control-label"></label>
+                    <select asp-for="Stage" asp-items="Html.GetEnumSelectList<Stage>()" class="form-control">
+                        <option selected="selected">Please select stage</option>
+                    </select>
+                    <span asp-validation-for="Stage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category" class="control-label"></label>
+                    <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category>()" class="form-control">
+                        <option selected="selected">Please select category</option>
+                    </select>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tooth" class="control-label"></label>
+                    <select asp-for="Tooth" asp-items="Html.GetEnumSelectList<Tooth>()" class="form-control">
+                        <option selected="selected">Please select tooth</option>
+                    </select>
+                    <span asp-validation-for="Tooth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RestorationType" class="control-label"></label>
+                    <select asp-for="RestorationType" asp-items="Html.GetEnumSelectList<RestorationType>()" class="form-control">
+                        <option selected="selected">Please select restoration type</option>
+                    </select>
+                    <span asp-validation-for="RestorationType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Shade" class="control-label"></label>
+                    <select asp-for="Shade" asp-items="Html.GetEnumSelectList<Shade>()" class="form-control">
+                        <option selected="selected">Please select shade</option>
+                    </select>
+                    <span asp-validation-for="Shade" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Comment" class="control-label"></label>
+                    <input asp-for="Comment" class="form-control" />
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreationDate" class="control-label"></label>
+                    <input asp-for="CreationDate" class="form-control" />
+                    <span asp-validation-for="CreationDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="IsImplant" /> @Html.DisplayNameFor(model => model.IsImplant)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-top: 20px; padding-left: 250px;">
+                    <input type="submit" value="Save" class="btn btn-primary btn-lg" style="border-radius: 4px; padding-left: 30px; padding-right: 30px;" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div style="padding-top: 30px; font-size: 20px;" class="text-center">
+        <a asp-controller="Case" asp-action="ReadAll">Back to List of Cases</a>
+    </div>
+</div>
+

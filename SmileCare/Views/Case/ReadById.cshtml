@@ -1,0 +1,90 @@
+﻿@model SmileCare.Models.Case
+
+<div class="container-fluid" style="padding-top: 140px; padding-bottom: 40px; background-color:cadetblue;color: #ffffff;">
+    <h1 class="text-center" style="font-size: 60px; padding-bottom: 20px;">Case's details</h1>
+
+    <div style="font-size: 24px;">
+        <h2>Case</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Dentist) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Dentist.FullName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Patient) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Patient.FullName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Employee) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Employee)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Stage) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Stage)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Category) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Tooth) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Tooth)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RestorationType) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RestorationType)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Shade) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Shade)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Comment) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Comment)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Price) €
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreationDate) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreationDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IsImplant) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsImplant)
+            </dd>
+        </dl>
+    </div>
+
+    <hr />
+    <div style="padding-top: 30px; font-size: 20px;">
+        <a asp-controller="Case" asp-action="Update" asp-route-id="@Model.Id">Update</a> |
+        <a asp-controller="Case" asp-action="ReadAll">Back to List of Cases</a>
+    </div>
+</div>

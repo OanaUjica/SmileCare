@@ -1,0 +1,49 @@
+﻿@model SmileCare.Models.Dentist
+
+<div class="container-fluid" style="padding-top: 140px; padding-bottom: 290px; background-color:darkseagreen;color: #ffffff;">
+    <h1 class="text-center" style="font-size: 60px; padding-bottom: 20px;">@Html.DisplayFor(model => model.FirstName)'s profile</h1>
+
+    <div style="font-size: 24px;">
+        <h2>Dentist</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.City) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.City)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+        </dl>
+    </div>
+
+    <hr />
+    <div style="padding-top: 30px; font-size: 20px;">
+        <a asp-controller="Dentist" asp-action="Update" asp-route-id="@Model.Id">Update</a> |
+        <a asp-controller="Dentist" asp-action="ReadAll">Back to List of Dentists</a>
+    </div>
+
+</div>
