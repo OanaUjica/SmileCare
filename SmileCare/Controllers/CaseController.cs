@@ -70,5 +70,43 @@ namespace SmileCare.Controllers
             var _cases = _repository.ReadAll().OrderBy(c => c.DentistId);
             return View(_cases);
         }
+
+
+        [HttpGet]
+        public IActionResult ReadById(int id)
+        {
+            var _cases = _repository.ReadById(id);
+
+            if (_cases == null)
+            {
+                return null;
+            }
+
+            return View(_cases);
+        }
+
+
+
+
+
+
+
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var _case = _repository.ReadById(id);
+            return View(_case);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Case updatedCase)
+        {
+            _repository.Update(updatedCase);
+
+            var _listOfCases = _repository.ReadAll().OrderBy(p => p.Id);
+
+            return RedirectToAction(nameof(ReadAll), _listOfCases);
+        }
     }
 }

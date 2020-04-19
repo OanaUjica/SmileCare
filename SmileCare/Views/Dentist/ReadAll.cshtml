@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Dentist>
 
 
-<div class="container-fluid" style="padding-top: 140px; padding-bottom: 300px; background-color:darkseagreen;color: #ffffff;">
+<div class="container-fluid" style="padding-top: 140px; padding-bottom: 270px; background-color:darkseagreen;color: #ffffff;">
     <h1 class="text-center">List of Dentists</h1>
 
     <p class="text-center" style="padding-top: 40px;">
@@ -62,8 +62,8 @@
                         </td>
                         <td>
                             @Html.ActionLink("Update", "Update", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Update", new { id = item.Id })
+                            @Html.ActionLink("Details", "ReadById", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                         </td>
                     </tr>
                 }
