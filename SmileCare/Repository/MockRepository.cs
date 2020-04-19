@@ -20,21 +20,21 @@ namespace SmileCare.Repository
 
         private void InitializeCases()
         {
-            _cases = new List<Case>
-            {
+            //_cases = new List<Case>
+            //{
                 
-                new Case {Id = 1, Dentist = "Carol Moldovan", Patient = "Ujica Remus", Stage = Stage.Received, Date = DateTime.Now, Employee = "Ujica Oana", Category = Category.Bridge, Tooth = Tooth.LowerCanine, RestorationType = RestorationType.CrownOverImplant, Shade = Shade.A35, IsImplant = true, Comment = "Please verify if we can do this case in 7 days."},
-                new Case {Id = 2, Dentist = "Carol Moldovan", Patient = "Ujica Remus", Stage = Stage.Received, Date = DateTime.Now, Employee = "Ujica Oana", Category = Category.Bridge, Tooth = Tooth.LowerCanine, RestorationType = RestorationType.CrownOverImplant, Shade = Shade.A35, IsImplant = true, Comment = "Please verify if we can do this case in 7 days."},
-                new Case {Id = 3, Dentist = "Carol Moldovan", Patient = "Ujica Remus", Stage = Stage.Received, Date = DateTime.Now, Employee = "Ujica Oana", Category = Category.Bridge, Tooth = Tooth.LowerCanine, RestorationType = RestorationType.CrownOverImplant, Shade = Shade.A35, IsImplant = true, Comment = "Please verify if we can do this case in 7 days."},
-                new Case {Id = 4, Dentist = "Carol Moldovan", Patient = "Ujica Remus", Stage = Stage.Received, Date = DateTime.Now, Employee = "Ujica Oana", Category = Category.Bridge, Tooth = Tooth.LowerCanine, RestorationType = RestorationType.CrownOverImplant, Shade = Shade.A35, IsImplant = true, Comment = "Please verify if we can do this case in 7 days."},
+            //    new Case {Id = 1, Dentist = , Patient = "Ujica Remus", Stage = Stage.Received, CreationDate = DateTime.Now, Employee = "Ujica Oana", Category = Category.Bridge, Tooth = Tooth.LowerCanine, RestorationType = RestorationType.CrownOverImplant, Shade = Shade.A35, IsImplant = true, Comment = "Please verify if we can do this case in 7 days."},
+            //    new Case {Id = 2, Dentist = "Carol Moldovan", Patient = "Ujica Remus", Stage = Stage.Received, CreationDate = DateTime.Now, Employee = "Ujica Oana", Category = Category.Bridge, Tooth = Tooth.LowerCanine, RestorationType = RestorationType.CrownOverImplant, Shade = Shade.A35, IsImplant = true, Comment = "Please verify if we can do this case in 7 days."},
+            //    new Case {Id = 3, Dentist = "Carol Moldovan", Patient = "Ujica Remus", Stage = Stage.Received, CreationDate = DateTime.Now, Employee = "Ujica Oana", Category = Category.Bridge, Tooth = Tooth.LowerCanine, RestorationType = RestorationType.CrownOverImplant, Shade = Shade.A35, IsImplant = true, Comment = "Please verify if we can do this case in 7 days."},
+            //    new Case {Id = 4, Dentist = "Carol Moldovan", Patient = "Ujica Remus", Stage = Stage.Received, CreationDate = DateTime.Now, Employee = "Ujica Oana", Category = Category.Bridge, Tooth = Tooth.LowerCanine, RestorationType = RestorationType.CrownOverImplant, Shade = Shade.A35, IsImplant = true, Comment = "Please verify if we can do this case in 7 days."},
 
-            };
+            //};
         }
 
         public void Create(Case entity)
         {
 
-            throw new NotImplementedException();
+            _cases.Add(entity);
         }
 
         public IEnumerable<Case> ReadAll()

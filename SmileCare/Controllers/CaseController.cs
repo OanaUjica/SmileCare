@@ -23,6 +23,35 @@ namespace SmileCare.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Create(Case newCase)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var _newCase = new Case
+            {
+                Id = newCase.Id,
+                Dentist = newCase.Dentist,
+                Patient = newCase.Patient,
+                Employee = newCase.Employee,
+                Stage = newCase.Stage,
+                Category = newCase.Category,
+                Tooth = newCase.Tooth,
+                RestorationType = newCase.RestorationType,
+                Shade = newCase.Shade,
+                Comment = newCase.Comment,
+                CreationDate = newCase.CreationDate,
+                IsImplant = newCase.IsImplant
+            };
+
+            _repository.Create(_newCase);
+
+            return RedirectToAction(nameof(ReadAll), _newCase);
+        }
+
         [HttpGet]
         public IActionResult ReadAll()
         {
