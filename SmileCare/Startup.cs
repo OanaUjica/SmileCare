@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SmileCare.Repository;
@@ -25,7 +26,10 @@ namespace SmileCare
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IRepository, MockRepository>();
+            services.AddDbContext<LaboratoryDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("SmileCareV1.0.Connection")));
+
+            services.AddTransient<IRepository, CaseRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

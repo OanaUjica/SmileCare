@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,18 +9,54 @@ namespace SmileCare.Models
 {
     public class Case
     {
+        [Key]
         public int Id { get; set; }
-        public string Dentist { get; set; }
-        public string Patient { get; set; }
-        public Stage Stage { get; set; }
-        public DateTime Date { get; set; }
+
+        [Required]
+        public int DentistId { get; set; }
+        public Dentist Dentist { get; set; }
+
+        [Required]
+        public int PatientId { get; set; }
+        public Patient Patient { get; set; }
+
+        [Required]
         public string Employee { get; set; }
-        public Category Category { get; set; }
-        public Tooth Tooth { get; set; }
-        public RestorationType RestorationType { get; set; }
-        public Shade Shade { get; set; }
-        public bool IsImplant { get; set; }
+
+        [Required]
+        [EnumDataType(typeof(Stage), ErrorMessage = "Please enter a stage.")]
+        public Stage? Stage { get; set; }
+
+        [Required]
+        [EnumDataType(typeof(Category), ErrorMessage = "Please enter a category.")]
+        public Category? Category { get; set; }
+
+        [Required]
+        [EnumDataType(typeof(Tooth), ErrorMessage = "Please enter a tooth.")]
+        public Tooth? Tooth { get; set; }
+
+        [Required]
+        [EnumDataType(typeof(RestorationType), ErrorMessage = "Please enter a restoration type.")]
+        [Display(Name = "Restoration Type")]
+        public RestorationType? RestorationType { get; set; }
+
+        [Required]
+        [EnumDataType(typeof(Shade), ErrorMessage = "Please enter a shade.")]
+        public Shade? Shade { get; set; }
+
         public string Comment { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        //[DataType(DataType.Currency)]
+        public decimal Price { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-mm-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime CreationDate { get; set; }
+
+        [Display(Name = "Is Implant")]
+        public bool IsImplant { get; set; }
+       
     }
 
     public enum Stage
