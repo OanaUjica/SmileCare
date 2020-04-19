@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SmileCare.Models;
 using SmileCare.Repository;
 
 namespace SmileCare
@@ -29,7 +30,9 @@ namespace SmileCare
             services.AddDbContext<LaboratoryDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("SmileCareV1.0.Connection")));
 
-            services.AddTransient<IRepository, CaseRepository>();
+            services.AddTransient<IRepository<Case>, CaseRepository>();
+            services.AddTransient<IRepository<Dentist>, DentistRepository>();
+            services.AddTransient<IRepository<Patient>, PatientRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

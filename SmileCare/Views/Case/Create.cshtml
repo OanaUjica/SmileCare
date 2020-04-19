@@ -12,12 +12,16 @@
 
                     <div class="form-group">
                         <label asp-for="Dentist" class="control-label"></label>
-                        <input asp-for="Dentist" class="form-control" />
+                        <select asp-for="DentistId" class="form-control" asp-items="ViewBag.DentistId">
+                            <option value="">-- Select Dentist --</option>
+                        </select>
                         <span asp-validation-for="Dentist" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Patient" class="control-label"></label>
-                        <input asp-for="Patient" class="form-control" />
+                        <select asp-for="PatientId" class="form-control" asp-items="ViewBag.PatientId">
+                            <option value="">-- Select Patient --</option>
+                        </select>
                         <span asp-validation-for="Patient" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -59,6 +63,11 @@
                             <option selected="selected">Please select shade</option>
                         </select>
                         <span asp-validation-for="Shade" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Comment" class="control-label"></label>
