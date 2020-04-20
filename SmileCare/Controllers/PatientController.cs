@@ -22,7 +22,7 @@ namespace SmileCare.Controllers
 
         [HttpGet]
         public IActionResult Create()
-        {
+        {            
             return View();
         }
 
@@ -87,12 +87,19 @@ namespace SmileCare.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var _pacient = _repository.ReadById(id);
-            return View(_pacient);
+            try
+            {
+                var _patient = _repository.ReadById(id);
+                return View(_patient);
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
+            }                     
         }
 
         [HttpPost]
-        public IActionResult Update(Patient patient)
+        public IActionResult Update([Bind("FirstName,LastName,City,Email,Phone")]Patient patient)
         {
              _repository.Update(patient);
 
@@ -101,5 +108,41 @@ namespace SmileCare.Controllers
             return RedirectToAction(nameof(ReadAll), _listOfPatients);
         }
 
+
+
+
+
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var _patient = _repository.ReadById(id);
+                return View(_patient);
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public IActionResult PostDelete(int id)
+        {
+            _repository.Delete(id);
+
+            var _listOfPatients = _repository.ReadAll().OrderBy(p => p.Id);
+
+            return RedirectToAction(nameof(ReadAll), _listOfPatients);
+        }
+
+
+
+        private void PopulatePatientDropDownlist()
+        {
+            
+        }
     }
 }

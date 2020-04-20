@@ -56,7 +56,17 @@ namespace SmileCare.Repository
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var _dentist = _laboratoryDbContext.Dentists.FirstOrDefault(p => p.Id == id);
+            if (_dentist != null)
+            {
+                _laboratoryDbContext.Dentists.Remove(_dentist);
+                _laboratoryDbContext.SaveChanges();
+            }
         }
+
+        //public IOrderedQueryable<Patient> PopulatePatientDropDownList()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

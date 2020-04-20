@@ -57,5 +57,9 @@ namespace SmileCare.Repository
             throw new NotImplementedException();
         }
 
+        //public IOrderedQueryable<Patient> PopulatePatientDropDownList()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

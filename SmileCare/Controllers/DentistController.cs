@@ -83,8 +83,15 @@ namespace SmileCare.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var _dentist = _repository.ReadById(id);
-            return View(_dentist);
+            try
+            {
+                var _dentist = _repository.ReadById(id);
+                return View(_dentist);
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
+            }
         }
 
         [HttpPost]
@@ -96,5 +103,39 @@ namespace SmileCare.Controllers
 
             return RedirectToAction(nameof(ReadAll), _listOfDentists);
         }
+
+
+
+
+
+
+
+
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var _dentist = _repository.ReadById(id);
+                return View(_dentist);
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public IActionResult PostDelete(int id)
+        {
+            _repository.Delete(id);
+
+            var _listOfDentists = _repository.ReadAll().OrderBy(p => p.Id);
+
+            return RedirectToAction(nameof(ReadAll), _listOfDentists);
+        }
+
     }
 }
