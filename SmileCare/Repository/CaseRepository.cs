@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SmileCare.Models;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,13 @@ namespace SmileCare.Repository
 
         public Case ReadById(int id)
         {
-            return _laboratoryDbContext.Cases.FirstOrDefault(c => c.Id == id);
+            var _case = _laboratoryDbContext.Cases
+                .Include(p => p.Patient)
+                .AsNoTracking()
+                .Include(d => d.Dentist)
+                .AsNoTracking()
+                .FirstOrDefault(c => c.Id == id);
+            return _case;
         }
 
 
@@ -72,7 +79,33 @@ namespace SmileCare.Repository
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var _case = _laboratoryDbContext.Cases.FirstOrDefault(p => p.Id == id);
+            if (_case != null)
+            {
+                _laboratoryDbContext.Cases.Remove(_case);
+                _laboratoryDbContext.SaveChanges();
+            }
         }
+
+
+
+
+
+        //public IOrderedQueryable<Patient> PopulatePatientDropDownList(string selectedPatient = null)
+        //{
+        //    var patientQuery = from p in _laboratoryDbContext.Patients
+        //                       orderby p.FullName
+        //                       select p;
+        //    return patientQuery;
+        //    //ViewBag.PatientId = new SelectList(patientQuery.AsNoTracking(), "FullName", selectedPatient);
+        //}
+
+        //public IOrderedQueryable<Patient> PopulatePatientDropDownList()
+        //{
+        //    var patientQuery = from p in _laboratoryDbContext.Patients
+        //                       orderby p.FullName
+        //                       select p;
+        //    return patientQuery;
+        //}
     }
 }

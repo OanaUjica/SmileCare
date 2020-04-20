@@ -13,5 +13,6 @@ namespace SmileCare.Repository
         T ReadById(int id);
         void Update(T entity);
         void Delete(int id);
+        //IOrderedQueryable<Patient> PopulatePatientDropDownList();
     }
 }
