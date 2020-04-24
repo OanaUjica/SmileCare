@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmileCare.Models;
+using SmileCare.Domain;
 
 namespace SmileCare.Repository
 {

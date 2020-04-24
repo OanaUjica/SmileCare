@@ -1,8 +1,6 @@
-﻿using SmileCare.Models;
-using System;
+﻿using SmileCare.Domain;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SmileCare.Repository
 {
@@ -17,6 +15,7 @@ namespace SmileCare.Repository
 
         public void Create(Patient patient)
         {
+            // exception
             _laboratoryDbContext.Patients.Add(patient);
             _laboratoryDbContext.SaveChanges();
         }
@@ -38,15 +37,12 @@ namespace SmileCare.Repository
 
         public void Update(Patient patient)
         {
-            if (_laboratoryDbContext.Patients.FirstOrDefault(p => p.Id == patient.Id) == null)
-            {
-                _laboratoryDbContext.SaveChanges();
-            }
-            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).FirstName = patient.FirstName;
-            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).LastName = patient.LastName;
-            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).City = patient.City;
-            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).Email = patient.Email;
-            _laboratoryDbContext.Patients.Single(p => p.Id == patient.Id).Phone = patient.Phone;
+            // exception
+            _laboratoryDbContext.Patients.FirstOrDefault(p => p.Id == patient.Id).FirstName = patient.FirstName;
+            _laboratoryDbContext.Patients.FirstOrDefault(p => p.Id == patient.Id).LastName = patient.LastName;
+            _laboratoryDbContext.Patients.FirstOrDefault(p => p.Id == patient.Id).City = patient.City;
+            _laboratoryDbContext.Patients.FirstOrDefault(p => p.Id == patient.Id).Email = patient.Email;
+            _laboratoryDbContext.Patients.FirstOrDefault(p => p.Id == patient.Id).Phone = patient.Phone;
 
             //_laboratoryDbContext.Patients.Update(patient);
             _laboratoryDbContext.SaveChanges();
@@ -55,17 +51,11 @@ namespace SmileCare.Repository
 
         public void Delete(int id)
         {
+            // exception
             var _patient = _laboratoryDbContext.Patients.FirstOrDefault(p => p.Id == id);
-            if (_patient != null)
-            {
-                _laboratoryDbContext.Patients.Remove(_patient);
-                _laboratoryDbContext.SaveChanges();
-            }            
+            _laboratoryDbContext.Patients.Remove(_patient);
+            _laboratoryDbContext.SaveChanges();         
         }
 
-        //public IOrderedQueryable<Patient> PopulatePatientDropDownList()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }
