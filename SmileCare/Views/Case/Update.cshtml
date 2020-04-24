@@ -1,4 +1,4 @@
-﻿@model SmileCare.Models.Case
+﻿@model Case
 
 <div class="container-fluid" style="padding-top: 140px; padding-bottom: 60px; background-color:cadetblue;color: #ffffff;">
     <h1 class="text-center" style="padding-bottom: 20px; font-size: 50px;">Case's update</h1>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Comment" class="control-label"></label>
-                    <input asp-for="Comment" class="form-control" />
+                    <textarea asp-for="Comment" class="form-control" id="Comment" rows="5"></textarea>
                     <span asp-validation-for="Comment" class="text-danger"></span>
                 </div>
                 <div class="form-group">

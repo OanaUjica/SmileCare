@@ -1,12 +1,9 @@
-﻿using SmileCare.Models;
-using System;
+﻿using SmileCare.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SmileCare.Repository
 {
-    public interface IRepository<T>
+    public interface IRepository<T> /*where T : Entity*/
     {
         void Create(T entity);
         IEnumerable<T> ReadAll();

@@ -1,6 +1,6 @@
 using System;
 
-namespace SmileCare.Models
+namespace SmileCare.Domain
 {
     public class ErrorViewModel
     {

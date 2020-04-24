@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using SmileCare.Models;
+using SmileCare.Domain;
 
 namespace SmileCare.Repository
 {
@@ -43,11 +41,11 @@ namespace SmileCare.Repository
             {
                 _laboratoryDbContext.SaveChanges();
             }
-            _laboratoryDbContext.Dentists.Single(d => d.Id == dentist.Id).FirstName = dentist.FirstName;
-            _laboratoryDbContext.Dentists.Single(d => d.Id == dentist.Id).LastName = dentist.LastName;
-            _laboratoryDbContext.Dentists.Single(d => d.Id == dentist.Id).City = dentist.City;
-            _laboratoryDbContext.Dentists.Single(d => d.Id == dentist.Id).Email = dentist.Email;
-            _laboratoryDbContext.Dentists.Single(d => d.Id == dentist.Id).Phone = dentist.Phone;
+            _laboratoryDbContext.Dentists.FirstOrDefault(d => d.Id == dentist.Id).FirstName = dentist.FirstName;
+            _laboratoryDbContext.Dentists.FirstOrDefault(d => d.Id == dentist.Id).LastName = dentist.LastName;
+            _laboratoryDbContext.Dentists.FirstOrDefault(d => d.Id == dentist.Id).City = dentist.City;
+            _laboratoryDbContext.Dentists.FirstOrDefault(d => d.Id == dentist.Id).Email = dentist.Email;
+            _laboratoryDbContext.Dentists.FirstOrDefault(d => d.Id == dentist.Id).Phone = dentist.Phone;
 
             //_laboratoryDbContext.Dentists.Update(dentist);
             _laboratoryDbContext.SaveChanges();

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmileCare.Models
+namespace SmileCare.Domain
 {
     public class Patient
     {
@@ -42,6 +42,5 @@ namespace SmileCare.Models
 
 
         public ICollection<Case> Cases { get; set; }
-
     }
 }

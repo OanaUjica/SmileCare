@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BillViewModel>
+
+<div class="container-fluid" style="background-image: url('../../images/tooth-creative-art-8k-u3-1920x1200.jpg'); padding-top: 100px; padding-bottom: 320px;">
+    <div class="container-fluid col-md-8" >
+        <h2 class="text-left" style="padding-top:160px; padding-bottom:140px; font-weight:600; font-size:60px;">Bills</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DentistName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PatientName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RestorationType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DentistName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PatientName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RestorationType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

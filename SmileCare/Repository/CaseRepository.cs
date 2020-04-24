@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using SmileCare.Models;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
+using SmileCare.Domain;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SmileCare.Repository
 {
@@ -28,10 +25,11 @@ namespace SmileCare.Repository
         public IEnumerable<Case> ReadAll()
         {
             var _cases = _laboratoryDbContext.Cases
-                .Include(p => p.Patient)
-                .AsNoTracking()
                 .Include(d => d.Dentist)
+                .AsNoTracking()
+                .Include(p => p.Patient)
                 .AsNoTracking();
+
 
             return _cases;
         }
@@ -57,18 +55,26 @@ namespace SmileCare.Repository
             {
                 _laboratoryDbContext.SaveChanges();
             }
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).DentistId = entity.DentistId;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).PatientId = entity.PatientId;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).Employee = entity.Employee;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).Stage = entity.Stage;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).Category = entity.Category;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).Tooth = entity.Tooth;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).RestorationType = entity.RestorationType;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).Shade = entity.Shade;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).Comment = entity.Comment;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).Price = entity.Price;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).CreationDate = entity.CreationDate;
-            _laboratoryDbContext.Cases.Single(d => d.Id == entity.Id).IsImplant = entity.IsImplant;
+
+            var _case = _laboratoryDbContext.Cases
+                .Include(d => d.Dentist)
+                .AsNoTracking()
+                .Include(p => p.Patient)
+                .AsNoTracking()
+                .FirstOrDefault(c => c.Id == entity.Id);
+
+            _case.DentistId = entity.DentistId;
+            _case.PatientId = entity.PatientId;
+            _case.Employee = entity.Employee;
+            _case.Stage = entity.Stage;
+            _case.Category = entity.Category;
+            _case.Tooth = entity.Tooth;
+            _case.RestorationType = entity.RestorationType;
+            _case.Shade = entity.Shade;
+            _case.Comment = entity.Comment;
+            _case.Price = entity.Price;
+            _case.CreationDate = entity.CreationDate;
+            _case.IsImplant = entity.IsImplant;
 
 
             //_laboratoryDbContext.Cases.Update(entity);

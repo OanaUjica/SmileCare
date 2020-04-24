@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SmileCare.Models;
+using SmileCare.Domain;
 using SmileCare.Repository;
+using SmileCare.Service;
 
 namespace SmileCare
 {
@@ -33,6 +28,9 @@ namespace SmileCare
             services.AddTransient<IRepository<Case>, CaseRepository>();
             services.AddTransient<IRepository<Dentist>, DentistRepository>();
             services.AddTransient<IRepository<Patient>, PatientRepository>();
+            services.AddTransient<PatientService>();
+            services.AddTransient<DentistService>();
+            services.AddTransient<CaseService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
