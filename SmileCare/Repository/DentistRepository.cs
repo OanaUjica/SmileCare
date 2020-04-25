@@ -14,6 +14,10 @@ namespace SmileCare.Repository
             _laboratoryDbContext = laboratoryDbContext;
         }
 
+        /// <summary>
+        /// Adds a dentist to the repository.
+        /// </summary>
+        /// <param name="patient"> the given dentist. </param>
         public void Create(Dentist dentist)
         {
             _laboratoryDbContext.Dentists.Add(dentist);
@@ -21,20 +25,30 @@ namespace SmileCare.Repository
         }
 
 
-
+        /// <summary>
+        /// Gets all dentists from the database.
+        /// </summary>
+        /// <returns> The dentists. </returns>
         public IEnumerable<Dentist> ReadAll()
         {
             return _laboratoryDbContext.Dentists;
         }
 
-
+        /// <summary>
+        /// Gets a dentist from the database.
+        /// </summary>
+        /// <param name="id"> The given id. </param>
+        /// <returns> The dentist. </returns>
         public Dentist ReadById(int id)
         {
             return _laboratoryDbContext.Dentists.FirstOrDefault(c => c.Id == id);
         }
 
 
-
+        /// <summary>
+        /// Updates a dentist from the database.
+        /// </summary>
+        /// <param name="dentist"> The given dentist. </param>
         public void Update(Dentist dentist)
         {
             if (_laboratoryDbContext.Dentists.FirstOrDefault(d => d.Id == dentist.Id) == null)
@@ -47,11 +61,13 @@ namespace SmileCare.Repository
             _laboratoryDbContext.Dentists.FirstOrDefault(d => d.Id == dentist.Id).Email = dentist.Email;
             _laboratoryDbContext.Dentists.FirstOrDefault(d => d.Id == dentist.Id).Phone = dentist.Phone;
 
-            //_laboratoryDbContext.Dentists.Update(dentist);
             _laboratoryDbContext.SaveChanges();
         }
 
-
+        /// <summary>
+        /// Deletes a dentist from the database.
+        /// </summary>
+        /// <param name="id"> The given id. </param>
         public void Delete(int id)
         {
             var _dentist = _laboratoryDbContext.Dentists.FirstOrDefault(p => p.Id == id);
@@ -61,10 +77,5 @@ namespace SmileCare.Repository
                 _laboratoryDbContext.SaveChanges();
             }
         }
-
-        //public IOrderedQueryable<Patient> PopulatePatientDropDownList()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

@@ -48,7 +48,7 @@ namespace SmileCare.Domain
         public decimal Price { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = @"{0:dd\/MM\/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CreationDate { get; set; }
 
         [Display(Name = "Is Implant")]

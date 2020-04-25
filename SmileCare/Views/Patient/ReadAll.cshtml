@@ -8,13 +8,13 @@
         <a asp-controller="Patient" asp-action="Create" class="btn btn-primary">Create New Patient</a>
     </p>
 
-    <div style="padding-top: 40px;">
+    <div style="padding-top: 60px; font-size: 20px;">
         <table class="table">
-            <thead>
+            <thead style="color:darkblue">
                 <tr>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.Id)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.FirstName)
                     </th>
@@ -36,9 +36,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.Id)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.FirstName)
                         </td>

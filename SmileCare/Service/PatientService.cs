@@ -13,12 +13,13 @@ namespace SmileCare.Service
         {
             _repository = repository;
         }
-        
 
+        /// <summary>
+        /// Adds a patient to the repository.
+        /// </summary>
+        /// <param name="newPatient"> The given new patient. </param>
         public void Create(Patient newPatient)
         {
-            // exception
-
             var _newPatient = new Patient
             {
                 FirstName = newPatient.FirstName,
@@ -31,13 +32,20 @@ namespace SmileCare.Service
             _repository.Create(_newPatient);
         }
 
-
+        /// <summary>
+        /// Gets all the patients from the repository.
+        /// </summary>
+        /// <returns> The patients. </returns>
         public IEnumerable<Patient> ReadAll()
         {
             return _repository.ReadAll().OrderBy(d => d.Id);
         }
 
-
+        /// <summary>
+        /// Gets the patient from the repository that matches a given id.
+        /// </summary>
+        /// <param name="id"> The given id. </param>
+        /// <returns> The patient. </returns>
         public Patient ReadById(int id)
         {
             var _patient = _repository.ReadById(id);
@@ -51,13 +59,19 @@ namespace SmileCare.Service
 
         }
 
-
+        /// <summary>
+        /// Updates the given patient from the repository.
+        /// </summary>
+        /// <param name="patient"> The given patient. </param>
         public void Update(Patient patient)
         {
             _repository.Update(patient);
         }
 
-
+        /// <summary>
+        /// Deletes the patient that matches a given id.
+        /// </summary>
+        /// <param name="id"> The given id. </param>
         public void Delete(int id)
         {
             _repository.Delete(id);
