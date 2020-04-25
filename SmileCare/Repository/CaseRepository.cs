@@ -14,14 +14,21 @@ namespace SmileCare.Repository
             _laboratoryDbContext = laboratoryDbContext;
         }
 
-        public void Create(Case entity)
+        /// <summary>
+        /// Adds a case to the repository.
+        /// </summary>
+        /// <param name="_case"> the given case. </param>
+        public void Create(Case _case)
         {
-            _laboratoryDbContext.Cases.Add(entity);
+            _laboratoryDbContext.Cases.Add(_case);
             _laboratoryDbContext.SaveChanges();
         }
 
 
-
+        /// <summary>
+        /// Gets all cases from the database.
+        /// </summary>
+        /// <returns> The cases. </returns>
         public IEnumerable<Case> ReadAll()
         {
             var _cases = _laboratoryDbContext.Cases
@@ -35,7 +42,11 @@ namespace SmileCare.Repository
         }
 
 
-
+        /// <summary>
+        /// Gets a case from the database.
+        /// </summary>
+        /// <param name="id"> The given id. </param>
+        /// <returns> The case. </returns>
         public Case ReadById(int id)
         {
             var _case = _laboratoryDbContext.Cases
@@ -48,7 +59,10 @@ namespace SmileCare.Repository
         }
 
 
-
+        /// <summary>
+        /// Updates a case from the database.
+        /// </summary>
+        /// <param name="entity"> The given case. </param>
         public void Update(Case entity)
         {
             if (_laboratoryDbContext.Cases.FirstOrDefault(d => d.Id == entity.Id) == null)
@@ -76,13 +90,14 @@ namespace SmileCare.Repository
             _case.CreationDate = entity.CreationDate;
             _case.IsImplant = entity.IsImplant;
 
-
-            //_laboratoryDbContext.Cases.Update(entity);
             _laboratoryDbContext.SaveChanges();
         }
 
 
-
+        /// <summary>
+        /// Deletes a case from the database.
+        /// </summary>
+        /// <param name="id"> The given id. </param>
         public void Delete(int id)
         {
             var _case = _laboratoryDbContext.Cases.FirstOrDefault(p => p.Id == id);
@@ -92,26 +107,5 @@ namespace SmileCare.Repository
                 _laboratoryDbContext.SaveChanges();
             }
         }
-
-
-
-
-
-        //public IOrderedQueryable<Patient> PopulatePatientDropDownList(string selectedPatient = null)
-        //{
-        //    var patientQuery = from p in _laboratoryDbContext.Patients
-        //                       orderby p.FullName
-        //                       select p;
-        //    return patientQuery;
-        //    //ViewBag.PatientId = new SelectList(patientQuery.AsNoTracking(), "FullName", selectedPatient);
-        //}
-
-        //public IOrderedQueryable<Patient> PopulatePatientDropDownList()
-        //{
-        //    var patientQuery = from p in _laboratoryDbContext.Patients
-        //                       orderby p.FullName
-        //                       select p;
-        //    return patientQuery;
-        //}
     }
 }

@@ -1,20 +1,20 @@
 ﻿@model IEnumerable<Dentist>
 
 
-<div class="container-fluid" style="padding-top: 140px; padding-bottom: 300px; background-color:darkseagreen;color: #ffffff;">
+<div class="container-fluid" style="padding-top: 140px; padding-bottom: 340px; background-color:darkseagreen;color: #ffffff;">
     <h1 class="text-center">List of Dentists</h1>
 
     <p class="text-center" style="padding-top: 40px;">
         <a asp-controller="Dentist" asp-action="Create" class="btn btn-primary">Create New Dentist</a>
     </p>
 
-    <div style="padding-top: 40px;">
+    <div style="padding-top: 60px; font-size: 20px;">
         <table class="table">
-            <thead>
+            <thead style="color:darkblue">
                 <tr>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.Id)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.FirstName)
                     </th>
@@ -36,9 +36,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.Id)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.FirstName)
                         </td>
