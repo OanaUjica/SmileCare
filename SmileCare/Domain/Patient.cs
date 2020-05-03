@@ -8,12 +8,12 @@ namespace SmileCare.Domain
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "First Name is required.")]
         [StringLength(50)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Last Name is required.")]
         [StringLength(50)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
@@ -21,10 +21,12 @@ namespace SmileCare.Domain
         [StringLength(100)]
         public string City { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
+        [StringLength(10)]
         public string Phone { get; set; }
 
 

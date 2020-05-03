@@ -9,15 +9,16 @@ namespace SmileCare.Domain
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Dentist is required.")]
         public int DentistId { get; set; }
         public Dentist Dentist { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Patient is required.")]
         public int PatientId { get; set; }
         public Patient Patient { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Employee is required.")]
+        [StringLength(50)]
         public string Employee { get; set; }
 
         [Required]
@@ -39,8 +40,9 @@ namespace SmileCare.Domain
 
         [Required]
         [EnumDataType(typeof(Shade), ErrorMessage = "Please enter a shade.")]
-        public Shade? Shade { get; set; }
+        public Shade Shade { get; set; }
 
+        [StringLength(5000)]
         public string Comment { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]

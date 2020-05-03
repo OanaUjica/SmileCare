@@ -29,9 +29,9 @@ namespace SmileCare.Repository
         /// Gets all patients from the database.
         /// </summary>
         /// <returns> The patients. </returns>
-        public IEnumerable<Patient> ReadAll()
+        public List<Patient> ReadAll()
         {
-            return _laboratoryDbContext.Patients;
+            return _laboratoryDbContext.Patients.ToList();
         }
 
         /// <summary>
