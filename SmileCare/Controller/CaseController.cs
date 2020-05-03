@@ -50,7 +50,7 @@ namespace SmileCare.Controllers
 
             _caseService.Create(newCase);
 
-            var _listOfCases= _caseService.ReadAll().OrderByDescending(c => c.CreationDate);
+            var _listOfCases= _caseService.ReadAll().OrderByDescending(c => c.CreationDate).ToList();
 
             return RedirectToAction(nameof(ReadAll), _listOfCases);
         }
@@ -62,7 +62,7 @@ namespace SmileCare.Controllers
         [HttpGet]
         public IActionResult ReadAll()
         {
-            var _cases = _caseService.ReadAll().OrderByDescending(c => c.CreationDate);
+            var _cases = _caseService.ReadAll().OrderByDescending(c => c.CreationDate).ToList();
             return View(_cases);
         }
 
@@ -128,7 +128,7 @@ namespace SmileCare.Controllers
 
             _caseService.Update(updatedCase);
 
-            var _listOfCases = _caseService.ReadAll().OrderByDescending(c => c.CreationDate);
+            var _listOfCases = _caseService.ReadAll().OrderByDescending(c => c.CreationDate).ToList();
 
             ViewData["PatientId"] = new SelectList(_patientService.ReadAll(), "Id", "FullName", _case.PatientId);
             ViewData["DentistId"] = new SelectList(_dentistService.ReadAll(), "Id", "FullName", _case.DentistId);
@@ -170,7 +170,7 @@ namespace SmileCare.Controllers
 
             _caseService.Delete(id);
 
-            var _listOfCases = _caseService.ReadAll().OrderByDescending(c => c.CreationDate);
+            var _listOfCases = _caseService.ReadAll().OrderByDescending(c => c.CreationDate).ToList();
 
             return RedirectToAction(nameof(ReadAll), _listOfCases);
         }
@@ -182,7 +182,7 @@ namespace SmileCare.Controllers
         [HttpGet]
         public IActionResult GetBillsPerCases()
         {
-            var _bills = _caseService.GetBillPerCase();
+            var _bills = _caseService.GetBillPerCase().ToList();
 
             return View(_bills);
         }

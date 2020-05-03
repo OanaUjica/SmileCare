@@ -36,9 +36,9 @@ namespace SmileCare.Service
         /// Gets all the dentists from the repository.
         /// </summary>
         /// <returns> The dentists. </returns>
-        public IEnumerable<Dentist> ReadAll()
+        public List<Dentist> ReadAll()
         {
-            return _repository.ReadAll().OrderBy(d => d.Id);
+            return _repository.ReadAll().OrderBy(d => d.Id).ToList();
         }
 
         /// <summary>

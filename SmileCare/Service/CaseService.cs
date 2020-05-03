@@ -44,9 +44,9 @@ namespace SmileCare.Service
         /// Gets all the cases from the repository.
         /// </summary>
         /// <returns> The cases. </returns>
-        public IEnumerable<Case> ReadAll()
+        public List<Case> ReadAll()
         {
-            return _repository.ReadAll().OrderByDescending(c => c.CreationDate);
+            return _repository.ReadAll().OrderByDescending(c => c.CreationDate).ToList();
         }
 
         /// <summary>

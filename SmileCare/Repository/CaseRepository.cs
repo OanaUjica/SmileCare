@@ -29,7 +29,7 @@ namespace SmileCare.Repository
         /// Gets all cases from the database.
         /// </summary>
         /// <returns> The cases. </returns>
-        public IEnumerable<Case> ReadAll()
+        public List<Case> ReadAll()
         {
             var _cases = _laboratoryDbContext.Cases
                 .Include(d => d.Dentist)
@@ -38,7 +38,7 @@ namespace SmileCare.Repository
                 .AsNoTracking();
 
 
-            return _cases;
+            return _cases.ToList();
         }
 
 

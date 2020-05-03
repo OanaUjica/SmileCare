@@ -37,7 +37,7 @@ namespace SmileCare.Repository
             _cases.Add(entity);
         }
 
-        public IEnumerable<Case> ReadAll()
+        public List<Case> ReadAll()
         {
             return _cases;
         }

@@ -43,7 +43,7 @@ namespace SmileCare.Controllers
 
             _dentistService.Create(newDentist);
 
-            var _listOfDentists = _dentistService.ReadAll().OrderBy(p => p.Id);
+            var _listOfDentists = _dentistService.ReadAll().OrderBy(p => p.Id).ToList();
 
             return RedirectToAction(nameof(ReadAll), _listOfDentists);
         }
@@ -56,7 +56,7 @@ namespace SmileCare.Controllers
         [HttpGet]
         public IActionResult ReadAll()
         {
-            var _dentists = _dentistService.ReadAll().OrderBy(d => d.Id);
+            var _dentists = _dentistService.ReadAll().OrderBy(d => d.Id).ToList();
             return View(_dentists);
         }
 
@@ -113,7 +113,7 @@ namespace SmileCare.Controllers
 
             _dentistService.Update(dentist);
 
-            var _listOfDentists = _dentistService.ReadAll().OrderBy(p => p.Id);
+            var _listOfDentists = _dentistService.ReadAll().OrderBy(p => p.Id).ToList();
 
             return RedirectToAction(nameof(ReadAll), _listOfDentists);
         }
@@ -153,7 +153,7 @@ namespace SmileCare.Controllers
 
             _dentistService.Delete(id);
 
-            var _listOfDentists = _dentistService.ReadAll().OrderBy(p => p.Id);
+            var _listOfDentists = _dentistService.ReadAll().OrderBy(p => p.Id).ToList();
 
             return RedirectToAction(nameof(ReadAll), _listOfDentists);
         }
