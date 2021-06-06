@@ -1,2 +1,2 @@
 # SmileCare
-ASP.NET Core web application (project for OOP course)
+ASP.NET Core web application managing a dental laboratory
